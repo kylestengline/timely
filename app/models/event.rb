@@ -1,7 +1,5 @@
 class Event < ApplicationRecord
-  validates :name, presence: true
-  validates :time, presence: true
-  validates :duration, presence: true
+  validates_presence_of :name, :time, :duration 
 
   has_many :events_users, dependent: :destroy
   has_many :users, through: :events_users

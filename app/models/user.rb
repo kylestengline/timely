@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  validates :name, presence: true
-  validates :email, presence: true
+  validates_presence_of :name, :email
 
   has_many :events_users, dependent: :destroy
   has_many :events, through: :events_users

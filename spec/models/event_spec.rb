@@ -15,31 +15,20 @@ RSpec.describe Event, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it "is invalid with invalid attributes" do
+  it "is invalid without a time" do
     subject.time = nil
     expect(subject).to_not be_valid
   end
 
-  it "is invalid with invalid attributes" do
+  it "is invalid without a duration" do
     subject.duration = nil
     expect(subject).to_not be_valid
   end
 
   describe "Associations" do
-    it "has many events users" do
-      assc = described_class.reflect_on_association(:events_users)
-      expect(assc.macro).to eq :has_many
-    end
-
-    it "has many users" do
-      assc = described_class.reflect_on_association(:users)
-      expect(assc.macro).to eq :has_many
-    end
-
-    it "has many timeslots" do
-      assc = described_class.reflect_on_association(:timeslots)
-      expect(assc.macro).to eq :has_many
-    end
+    it { should have_many(:events_users) }
+    it { should have_many(:users) }
+    it { should have_many(:timeslots) }
   end
 
 end

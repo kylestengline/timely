@@ -20,15 +20,7 @@ RSpec.describe Preference, type: :model do
   end
 
   describe "Associations" do
-    it "belongs to user" do
-      assc = described_class.reflect_on_association(:user)
-      expect(assc.macro).to eq :belongs_to
-    end
-
-    it "belongs to timeslot" do
-      assc = described_class.reflect_on_association(:timeslot)
-      expect(assc.macro).to eq :belongs_to
-    end
+    it { should belong_to(:user) }
+    it { should belong_to(:user) }
   end
-
 end

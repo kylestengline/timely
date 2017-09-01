@@ -47,6 +47,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'foreman'
   gem 'factory_girl_rails'
+  gem 'shoulda'
 end
 
 group :development do

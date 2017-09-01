@@ -22,14 +22,7 @@ RSpec.describe Timeslot, type: :model do
   end
 
   describe "Associations" do
-    it "belongs to event" do
-      assc = described_class.reflect_on_association(:event)
-      expect(assc.macro).to eq :belongs_to
-    end
-
-    it "has many preferences" do
-      assc = described_class.reflect_on_association(:preferences)
-      expect(assc.macro).to eq :has_many
-    end
+    it { should belong_to(:event) }
+    it { should have_many(:preferences) }
   end
 end

@@ -11,11 +11,6 @@ RSpec.describe Timeslot, type: :model do
     expect(subject).to be_valid
   end
 
-  it "is invalid without an event" do
-    subject.event_id = nil
-    expect(subject).to_not be_valid
-  end
-
   it "is invalid without a start_time" do
     subject.start_time = nil
     expect(subject).to_not be_valid

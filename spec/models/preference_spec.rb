@@ -4,7 +4,7 @@ RSpec.describe Preference, type: :model do
 
   let!(:user) { User.create(name: "dev magic", email: "me@example.com")}
   let!(:location) {Location.create(name: "dev magic", address: "255 Drury Lane, Fairtale Land, MA")}
-  let!(:event) { Event.create(name: "dev magic", time: DateTime.now, duration: 5, location_id: location.id)}
+  let!(:event) { Event.create(name: "dev magic", time: DateTime.now, duration_minutes: 30, location_id: location.id)}
   let!(:timeslot) { Timeslot.create(start_time: DateTime.now, event_id: event.id)}
   
   subject {

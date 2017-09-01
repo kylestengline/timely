@@ -1,3 +1,4 @@
+# A potential time for an event
 class Timeslot < ApplicationRecord
   validates_presence_of :start_time
 

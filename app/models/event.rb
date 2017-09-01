@@ -1,5 +1,6 @@
+# Event for users to attend
 class Event < ApplicationRecord
-  validates_presence_of :name, :time, :duration 
+  validates_presence_of :name, :time, :duration_minutes
 
   belongs_to :location
 

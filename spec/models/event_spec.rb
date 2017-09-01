@@ -4,7 +4,7 @@ RSpec.describe Event, type: :model do
   let!(:location) {Location.create(name: "dev magic", address: "255 Drury Lane, Fairtale Land, MA")}
 
   subject {
-    described_class.new(name: "dev magic", time: DateTime.now, duration: 5, location_id: location.id)
+    described_class.new(name: "dev magic", time: DateTime.now, duration_minutes: 30, location_id: location.id)
   } 
 
   it "is valid with valid attributes" do
@@ -21,8 +21,8 @@ RSpec.describe Event, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it "is invalid without a duration" do
-    subject.duration = nil
+  it "is invalid without duration_minutes" do
+    subject.duration_minutes = nil
     expect(subject).to_not be_valid
   end
 

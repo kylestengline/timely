@@ -1,5 +1,5 @@
 class Preference < ApplicationRecord
-  validates :preference_type, presence: true
+  validates_presence_of :preference_type
 
   belongs_to :timeslot
   belongs_to :user

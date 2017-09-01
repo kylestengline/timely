@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Preference, type: :model do
 
-  let!(:event) { Event.create(name: "dev magic", time: DateTime.now, duration: 5)}
   let!(:user) { User.create(name: "dev magic", email: "me@example.com")}
+  let!(:event) { Event.create(name: "dev magic", time: DateTime.now, duration: 5)}
   let!(:timeslot) { Timeslot.create(start_time: DateTime.now, event_id: 1)}
   
   subject {
@@ -21,6 +21,6 @@ RSpec.describe Preference, type: :model do
 
   describe "Associations" do
     it { should belong_to(:user) }
-    it { should belong_to(:user) }
+    it { should belong_to(:timeslot) }
   end
 end

@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Timeslot, type: :model do
-  let!(:event) { Event.create(name: "dev magic", time: DateTime.now, duration: 5)}
+
+  let!(:location) {Location.create(name: "dev magic", address: "255 Drury Lane, Fairtale Land, MA")}
+  let!(:event) { Event.create(name: "dev magic", time: DateTime.now, duration: 5, location_id: location.id)}
 
   subject {
-    described_class.new(start_time: DateTime.now, event_id: 1)
+    described_class.new(start_time: DateTime.now, event_id: event.id)
   } 
 
   it "is valid with valid attributes" do

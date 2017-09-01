@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829050644) do
+ActiveRecord::Schema.define(version: 20170901034820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 20170829050644) do
     t.integer "duration", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "location_id"
     t.index ["duration"], name: "index_events_on_duration"
+    t.index ["location_id"], name: "index_events_on_location_id"
     t.index ["name"], name: "index_events_on_name"
     t.index ["time"], name: "index_events_on_time"
   end
@@ -32,6 +34,15 @@ ActiveRecord::Schema.define(version: 20170829050644) do
     t.index ["event_id", "user_id"], name: "index_events_users_on_event_id_and_user_id", unique: true
     t.index ["event_id"], name: "index_events_users_on_event_id"
     t.index ["user_id"], name: "index_events_users_on_user_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address"], name: "index_locations_on_address", unique: true
+    t.index ["name"], name: "index_locations_on_name", unique: true
   end
 
   create_table "preferences", force: :cascade do |t|
@@ -61,4 +72,5 @@ ActiveRecord::Schema.define(version: 20170829050644) do
     t.index ["name"], name: "index_users_on_name"
   end
 
+  add_foreign_key "events", "locations"
 end

@@ -3,11 +3,12 @@ require 'rails_helper'
 RSpec.describe Preference, type: :model do
 
   let!(:user) { User.create(name: "dev magic", email: "me@example.com")}
-  let!(:event) { Event.create(name: "dev magic", time: DateTime.now, duration: 5)}
-  let!(:timeslot) { Timeslot.create(start_time: DateTime.now, event_id: 1)}
+  let!(:location) {Location.create(name: "dev magic", address: "255 Drury Lane, Fairtale Land, MA")}
+  let!(:event) { Event.create(name: "dev magic", time: DateTime.now, duration: 5, location_id: location.id)}
+  let!(:timeslot) { Timeslot.create(start_time: DateTime.now, event_id: event.id)}
   
   subject {
-    described_class.new(preference_type: 3, timeslot_id: 1, user_id: 1)
+    described_class.new(preference_type: 3, user_id: user.id, timeslot_id: timeslot.id)
   }
 
   it "is valid with atrributes" do
